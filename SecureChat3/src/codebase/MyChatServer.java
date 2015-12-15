@@ -155,11 +155,12 @@ class MyChatServer extends ChatServer {
 				// Whoever is sending it must be already logged in
 				if (((IsA && statA != "") || (!IsA && statB != ""))) {
 					byte []decrypted = CertificateManager.decrypt(privateKey, p.data);
-					System.out.println("decrypted msg: " + new String(decrypted));
-
+					System.out.println("decrypted msg: " + new String(decrypted).trim());
+					String decryptedStr = new String(decrypted).trim();
+					
 					PublicKey currentPk = !IsA ? publicKeyA : publicKeyB;
 					if(currentPk != null) { // check that receiver also have selected private key and certificate
-						byte []encrypted = CertificateManager.encrypt(currentPk, decrypted);
+						byte []encrypted = CertificateManager.encrypt(currentPk, decryptedStr.getBytes("UTF-8"));
 						p.data = encrypted;
 						// Forward the encrypted packet to the recipient
 						SerializeNSend(!IsA, p);

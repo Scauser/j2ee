@@ -449,7 +449,7 @@ class MyChatClient extends ChatClient {
 		}
 		try {
 			builder.add(Json.createObjectBuilder().add("from", from).add("to", to).add("time", "").add("message",
-					new String(decrypted, "UTF-8")));
+					new String(decrypted, "UTF-8").trim()));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
