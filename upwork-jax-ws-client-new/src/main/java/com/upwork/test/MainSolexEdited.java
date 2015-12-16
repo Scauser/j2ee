@@ -32,9 +32,14 @@ public class MainSolexEdited {
 		System.setProperty("com.sun.xml.ws.transport.http.HttpAdapter.dump", "true");
 		System.setProperty("com.sun.xml.internal.ws.transport.http.HttpAdapter.dump", "true");
 
+		requestToIWSTrust();
+	}
+
+	private static void requestToIWSTrust() {
 		URL url = null;
 		try {
-			url = new URL("file:///D:/Projects/Repositories/chrome-extensions/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
+			//			url = new URL("file:///D:/Projects/Repositories/chrome-extensions/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
+			url = new URL("file:///Users/daniyar/repos/j2ee/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
 			//url = new URL("http://localhost:8080/localhost?WSDL");
 			//			url = new URL("http://localhost:8081/IVR?WSDL");
 			//sample location path can be file:///home/abc/IVRUserManagementServiceImplPort.wsdl
@@ -106,8 +111,8 @@ public class MainSolexEdited {
 		} catch(Exception e) {
 			logger.severe(e.getMessage());
 		}
-//		RequestSecurityTokenResponseCollectionType rsp = 
-//				trust13Async.trust13IssueAsync(actionHeader, midHeader, replyTo, vsDebugger, toHeader, security, requestToken);
+		//		RequestSecurityTokenResponseCollectionType rsp = 
+		//				trust13Async.trust13IssueAsync(actionHeader, midHeader, replyTo, vsDebugger, toHeader, security, requestToken);
 		RequestSecurityTokenResponseCollectionType rsp = trust13Async.trust13IssueAsync(requestToken);
 		List<RequestSecurityTokenResponseType> listRsp = rsp.getRequestSecurityTokenResponse();
 	}
