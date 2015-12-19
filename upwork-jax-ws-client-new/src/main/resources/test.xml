@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<S:Header>
+		<ns4:Security xmlns:ns2="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+			xmlns:ns3="http://webservices.nes.accenture.com/"
+			xmlns:ns4="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+			<ns2:Assertion ID="_53b1f678-f52f-4bc1-94e3-3c776baa7138" />
+		</ns4:Security>
+	</S:Header>
+	<S:Body>
+		<ns3:authorizeUser xmlns:ns2="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+			xmlns:ns3="http://webservices.nes.accenture.com/"
+			xmlns:ns4="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+			<authorizeUserRequestDTO>
+				<ns2:establishmentID>32434</ns2:establishmentID>
+				<ns2:languageKey>232</ns2:languageKey>
+				<ns2:telephone>2312</ns2:telephone>
+				<ns2:uniqueID>43333</ns2:uniqueID>
+			</authorizeUserRequestDTO>
+		</ns3:authorizeUser>
+	</S:Body>
+</S:Envelope>

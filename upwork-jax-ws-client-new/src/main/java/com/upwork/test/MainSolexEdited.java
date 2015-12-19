@@ -33,6 +33,7 @@ public class MainSolexEdited {
 		System.setProperty("com.sun.xml.internal.ws.transport.http.HttpAdapter.dump", "true");
 
 		requestToIWSTrust();
+		//		requestToIVR();
 	}
 
 	private static void requestToIWSTrust() {
@@ -116,7 +117,13 @@ public class MainSolexEdited {
 		//RequestSecurityTokenResponseCollectionType rsp = trust13Async.trust13IssueAsync(requestToken);
 		List<RequestSecurityTokenResponseType> listRsp = rsp.getRequestSecurityTokenResponse();
 		for(RequestSecurityTokenResponseType rspType : listRsp) {
-			logger.info(rspType.getAny().toString());
+//			logger.info(rspType.getAny().toString());
+			for(Object obj : rspType.getAny()) {
+				logger.info(obj.getClass().toString());
+				if(obj instanceof RequestedSecurityToken) {
+					logger.info("Eurika!!!!!!");
+				}
+			}
 		}
 	}
 
