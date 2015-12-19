@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.nes.accenture.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webservices.nes.accenture.com/" name="IVRService" targetNamespace="http://webservices.nes.accenture.com">
+   <wsdl:types>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+         <!-- XML Schema Generated from XML Document on Fri Dec 18 2015 16:51:32 GMT+0600 (Central Asia Standard Time) -->
+         <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+         <xs:element name="s:Envelope">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="s:Header">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="a:Action" type="xs:string">
+                                                   <xs:complexType>
+                                                         <xs:attribute name="s:mustUnderstand" type="xs:int"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="a:RelatesTo" type="xs:string"></xs:element>
+                                             <xs:element name="o:Security">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="u:Timestamp">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="u:Created" type="xs:string"></xs:element>
+                                                                                 <xs:element name="u:Expires" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attribute name="u:Id" type="xs:string"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attribute name="xmlns:o" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="s:mustUnderstand" type="xs:int"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="s:Body">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="trust:RequestSecurityTokenResponseCollection">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="trust:RequestSecurityTokenResponse">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="trust:Lifetime">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="wsu:Created" type="xs:string">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:attribute name="xmlns:wsu" type="xs:string"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                                   <xs:element name="wsu:Expires" type="xs:string">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:attribute name="xmlns:wsu" type="xs:string"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                                 <xs:element name="wsp:AppliesTo">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="wsa:EndpointReference">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:sequence>
+                                                                                                                     <xs:element name="wsa:Address" type="xs:string"></xs:element>
+                                                                                                               </xs:sequence>
+                                                                                                               <xs:attribute name="xmlns:wsa" type="xs:string"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                             <xs:attribute name="xmlns:wsp" type="xs:string"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                                 <xs:element name="trust:RequestedSecurityToken">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="Assertion">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:sequence>
+                                                                                                                     <xs:element name="Issuer" type="xs:string"></xs:element>
+                                                                                                                     <xs:element name="ds:Signature">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:sequence>
+                                                                                                                                       <xs:element name="ds:SignedInfo">
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="ds:CanonicalizationMethod">
+                                                                                                                                                               <xs:complexType>
+                                                                                                                                                                     <xs:attribute name="Algorithm" type="xs:string"></xs:attribute>
+                                                                                                                                                               </xs:complexType>
+                                                                                                                                                         </xs:element>
+                                                                                                                                                         <xs:element name="ds:SignatureMethod">
+                                                                                                                                                               <xs:complexType>
+                                                                                                                                                                     <xs:attribute name="Algorithm" type="xs:string"></xs:attribute>
+                                                                                                                                                               </xs:complexType>
+                                                                                                                                                         </xs:element>
+                                                                                                                                                         <xs:element name="ds:Reference">
+                                                                                                                                                               <xs:complexType>
+                                                                                                                                                                     <xs:sequence>
+                                                                                                                                                                           <xs:element name="ds:Transforms">
+                                                                                                                                                                                 <xs:complexType>
+                                                                                                                                                                                       <xs:sequence>
+                                                                                                                                                                                             <xs:element name="ds:Transform" maxOccurs="unbounded">
+                                                                                                                                                                                                   <xs:complexType>
+                                                                                                                                                                                                         <xs:attribute name="Algorithm" type="xs:string"></xs:attribute>
+                                                                                                                                                                                                   </xs:complexType>
+                                                                                                                                                                                             </xs:element>
+                                                                                                                                                                                       </xs:sequence>
+                                                                                                                                                                                 </xs:complexType>
+                                                                                                                                                                           </xs:element>
+                                                                                                                                                                           <xs:element name="ds:DigestMethod">
+                                                                                                                                                                                 <xs:complexType>
+                                                                                                                                                                                       <xs:attribute name="Algorithm" type="xs:string"></xs:attribute>
+                                                                                                                                                                                 </xs:complexType>
+                                                                                                                                                                           </xs:element>
+                                                                                                                                                                           <xs:element name="ds:DigestValue" type="xs:string"></xs:element>
+                                                                                                                                                                     </xs:sequence>
+                                                                                                                                                                     <xs:attribute name="URI" type="xs:string"></xs:attribute>
+                                                                                                                                                               </xs:complexType>
+                                                                                                                                                         </xs:element>
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                             </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                       <xs:element name="ds:SignatureValue" type="xs:string"></xs:element>
+                                                                                                                                       <xs:element name="KeyInfo">
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="ds:X509Data">
+                                                                                                                                                               <xs:complexType>
+                                                                                                                                                                     <xs:sequence>
+                                                                                                                                                                           <xs:element name="ds:X509Certificate" type="xs:string"></xs:element>
+                                                                                                                                                                     </xs:sequence>
+                                                                                                                                                               </xs:complexType>
+                                                                                                                                                         </xs:element>
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                                   <xs:attribute name="xmlns" type="xs:string"></xs:attribute>
+                                                                                                                                             </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                 </xs:sequence>
+                                                                                                                                 <xs:attribute name="xmlns:ds" type="xs:string"></xs:attribute>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                                     <xs:element name="Subject">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:sequence>
+                                                                                                                                       <xs:element name="SubjectConfirmation">
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="SubjectConfirmationData">
+                                                                                                                                                               <xs:complexType>
+                                                                                                                                                                     <xs:attribute name="NotOnOrAfter" type="xs:string"></xs:attribute>
+                                                                                                                                                               </xs:complexType>
+                                                                                                                                                         </xs:element>
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                                   <xs:attribute name="Method" type="xs:string"></xs:attribute>
+                                                                                                                                             </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                 </xs:sequence>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                                     <xs:element name="Conditions">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:sequence>
+                                                                                                                                       <xs:element name="AudienceRestriction">
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="Audience" type="xs:string"></xs:element>
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                             </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                 </xs:sequence>
+                                                                                                                                 <xs:attribute name="NotBefore" type="xs:string"></xs:attribute>
+                                                                                                                                 <xs:attribute name="NotOnOrAfter" type="xs:string"></xs:attribute>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                                     <xs:element name="AttributeStatement">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:sequence>
+                                                                                                                                       <xs:element name="Attribute" maxOccurs="unbounded">
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="AttributeValue" type="xs:string"></xs:element>
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                                   <xs:attribute name="Name" type="xs:string"></xs:attribute>
+                                                                                                                                             </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                 </xs:sequence>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                                     <xs:element name="AuthnStatement">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:sequence>
+                                                                                                                                       <xs:element name="AuthnContext">
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="AuthnContextClassRef" type="xs:string"></xs:element>
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                             </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                 </xs:sequence>
+                                                                                                                                 <xs:attribute name="AuthnInstant" type="xs:string"></xs:attribute>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                               </xs:sequence>
+                                                                                                               <xs:attribute name="xmlns" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="ID" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="IssueInstant" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="Version" type="xs:int"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                                 <xs:element name="trust:RequestedAttachedReference">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="SecurityTokenReference">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:sequence>
+                                                                                                                     <xs:element name="KeyIdentifier" type="xs:string">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:attribute name="ValueType" type="xs:string"></xs:attribute>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                               </xs:sequence>
+                                                                                                               <xs:attribute name="xmlns" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="xmlns:b" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="b:TokenType" type="xs:string"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                                 <xs:element name="trust:RequestedUnattachedReference">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="SecurityTokenReference">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:sequence>
+                                                                                                                     <xs:element name="KeyIdentifier" type="xs:string">
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:attribute name="ValueType" type="xs:string"></xs:attribute>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                               </xs:sequence>
+                                                                                                               <xs:attribute name="xmlns" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="xmlns:b" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="b:TokenType" type="xs:string"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                                 <xs:element name="trust:TokenType" type="xs:string"></xs:element>
+                                                                                 <xs:element name="trust:RequestType" type="xs:string"></xs:element>
+                                                                                 <xs:element name="trust:KeyType" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attribute name="xmlns:trust" type="xs:string"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+                     <xs:attribute name="xmlns:s" type="xs:string"></xs:attribute>
+                     <xs:attribute name="xmlns:a" type="xs:string"></xs:attribute>
+                     <xs:attribute name="xmlns:u" type="xs:string"></xs:attribute>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>
+   </wsdl:types>
+   <wsdl:service name="IVRService">
+    <wsdl:port binding="tns:IVRBinding" name="IVRServiceImplPort">
+      <soap:address location="http://10.35.20.51:8580/nes-ivr-service-1.0/IVRService"/>
+    </wsdl:port>
+  </wsdl:service>
+ </wsdl:definitions> 

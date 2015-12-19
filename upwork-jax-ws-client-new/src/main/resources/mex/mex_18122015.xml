@@ -1081,9 +1081,9 @@
 		<wsdl:port name="UserNameWSTrustBinding_IWSTrust13Async"
 			binding="tns:UserNameWSTrustBinding_IWSTrust13Async">
 			<soap12:address
-				location="http://localhost:8080/Mex" />
+				location="https://adfs.preprod.nes/adfs/services/trust/13/usernamemixed" />
 			<wsa10:EndpointReference>
-				<wsa10:Address>http://localhost:8080/Mex
+				<wsa10:Address>https://adfs.preprod.nes/adfs/services/trust/13/usernamemixed
 				</wsa10:Address>
 			</wsa10:EndpointReference>
 		</wsdl:port>
