@@ -6,6 +6,7 @@
  */
 package com.upwork.test;
 
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,10 +14,16 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.xml.bind.JAXBContext;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -43,8 +50,8 @@ public class MainSolexEdited {
 	private static void requestToIWSTrust() {
 		URL url = null;
 		try {
-			url = new URL("file:///D:/Projects/Repositories/j2ee/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
-			//			url = new URL("file:///Users/daniyar/repos/j2ee/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
+			//			url = new URL("file:///D:/Projects/Repositories/j2ee/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
+			url = new URL("file:///Users/daniyar/repos/j2ee/upwork-jax-ws-client-new/src/main/resources/mex/mex.xml");
 			//url = new URL("http://localhost:8080/localhost?WSDL");
 			//			url = new URL("http://localhost:8081/IVR?WSDL");
 			//sample location path can be file:///home/abc/IVRUserManagementServiceImplPort.wsdl
@@ -120,14 +127,30 @@ public class MainSolexEdited {
 				trust13Async.trust13IssueAsync(actionHeader, midHeader, replyTo, vsDebugger, toHeader, security, requestToken);
 		//RequestSecurityTokenResponseCollectionType rsp = trust13Async.trust13IssueAsync(requestToken);
 		List<RequestSecurityTokenResponseType> listRsp = rsp.getRequestSecurityTokenResponse();
+		String assertionStr = null;
 		for(RequestSecurityTokenResponseType rspType : listRsp) {
-			//			logger.info(rspType.getAny().toString());
-			for(Object obj : rspType.getAny()) {
-				logger.info(obj.getClass().toString());
-				if(obj instanceof RequestedSecurityToken) {
-					logger.info("Eurika!!!!!!");
-				}
+			try {
+				DOMResult res = new DOMResult();
+				JAXBContext context = JAXBContext.newInstance(rspType.getClass());
+				context.createMarshaller().marshal(rspType, res);
+				Document doc = (Document) res.getNode();
+				DOMSource domSource = new DOMSource(doc);
+				StringWriter writer = new StringWriter();
+				StreamResult result = new StreamResult(writer);
+				TransformerFactory tf = TransformerFactory.newInstance();
+				Transformer transformer = tf.newTransformer();
+				transformer.transform(domSource, result);
+				int startIndex = writer.toString().indexOf("<Assertion:Assertion");
+				int lastIndex = writer.toString().indexOf("</Assertion:Assertion>");
+				assertionStr = writer.toString().substring(startIndex, lastIndex + 22);
+			} catch(Exception e) {
+				logger.severe(e.getMessage());
 			}
+		}
+		if(assertionStr != null) {
+			logger.info(assertionStr);
+		} else {
+			logger.warning("unable find assertion tag!!");
 		}
 	}
 
@@ -157,7 +180,7 @@ public class MainSolexEdited {
 		} catch(Exception e) {
 			logger.severe(e.getMessage());
 		}
-		
+
 		assertion.setVersion(new BigDecimal("2.0"));
 		assertion.setIssuer("http://adfs.preprod.nes/adfs/services/trust");
 
