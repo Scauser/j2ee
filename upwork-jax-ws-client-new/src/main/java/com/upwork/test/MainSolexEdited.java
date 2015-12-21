@@ -6,11 +6,15 @@
  */
 package com.upwork.test;
 
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -117,7 +121,7 @@ public class MainSolexEdited {
 		//RequestSecurityTokenResponseCollectionType rsp = trust13Async.trust13IssueAsync(requestToken);
 		List<RequestSecurityTokenResponseType> listRsp = rsp.getRequestSecurityTokenResponse();
 		for(RequestSecurityTokenResponseType rspType : listRsp) {
-//			logger.info(rspType.getAny().toString());
+			//			logger.info(rspType.getAny().toString());
 			for(Object obj : rspType.getAny()) {
 				logger.info(obj.getClass().toString());
 				if(obj instanceof RequestedSecurityToken) {
@@ -144,7 +148,18 @@ public class MainSolexEdited {
 
 		WsseSecurity header = new WsseSecurity();
 		Assertion assertion = new Assertion();
-		assertion.setID("_53b1f678-f52f-4bc1-94e3-3c776baa7138");
+		assertion.setID("_5547b3cb-e910-48e3-8b6f-9dbc0e56e45c");
+
+		try {
+			GregorianCalendar c = new GregorianCalendar();
+			XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+			assertion.setIssueInstant(date2);
+		} catch(Exception e) {
+			logger.severe(e.getMessage());
+		}
+		
+		assertion.setVersion(new BigDecimal("2.0"));
+		assertion.setIssuer("http://adfs.preprod.nes/adfs/services/trust");
 
 		header.setAssertion(assertion);
 
