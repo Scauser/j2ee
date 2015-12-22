@@ -8,7 +8,8 @@
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<context:component-scan base-package="com.upwork.springmvc" />
-	<!-- <context:property-placeholder location="classpath:config.properties" /> -->
+	<!-- <context:property-placeholder location="classpath:config.properties" 
+		/> -->
 	<mvc:annotation-driven />
 
 	<bean id="dataSource"
@@ -36,7 +37,7 @@
 		</property>
 	</bean>
 
-	<bean id="txManager"
+	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
