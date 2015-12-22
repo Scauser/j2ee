@@ -6,10 +6,12 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.upwork.springmvc.model.Employee;
 
 @Repository("employeeDao")
+@Transactional
 public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements EmployeeDao {
 
 	public Employee findById(int id) {

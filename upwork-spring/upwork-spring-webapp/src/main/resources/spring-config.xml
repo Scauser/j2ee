@@ -7,11 +7,11 @@
   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<context:component-scan base-package="com.upwork.springmvc" />
+	<mvc:annotation-driven />
+	<context:component-scan
+		base-package="com.upwork.springmvc.service, com.upwork.springmvc.controller, com.upwork.springmvc.dao" />
 	<!-- <context:property-placeholder location="classpath:config.properties" 
 		/> -->
-	<mvc:annotation-driven />
-
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${database.driver}" />
@@ -23,9 +23,11 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="packagesToScan" value="com.upwork.springmvc.model" 
+			/> -->
 		<property name="annotatedClasses">
 			<list>
-				<!-- <value>com.beingjavaguys.domain.Employee</value> -->
+				<value>com.upwork.springmvc.model.Employee</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
