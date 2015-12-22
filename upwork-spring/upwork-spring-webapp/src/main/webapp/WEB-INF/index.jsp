@@ -1,4 +1,4 @@
-<%response.sendRedirect("shopping");%>
+<%response.sendRedirect("list");%>
 <html>
 <body>
 	<h2>Hello World!</h2>
