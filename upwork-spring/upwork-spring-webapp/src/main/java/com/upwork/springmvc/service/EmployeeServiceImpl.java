@@ -55,5 +55,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee employee = findEmployeeBySsn(ssn);
 		return ( employee == null || ((id != null) && (employee.getId() == id)));
 	}
-
 }

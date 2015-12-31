@@ -1,7 +1,6 @@
 package com.upwork.springmvc.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +12,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="employee")
@@ -30,16 +27,16 @@ public class Employee {
 	private String name;
 
 	@NotNull
-	@DateTimeFormat(pattern="dd/MM/yyyy") 
+//	@DateTimeFormat(pattern="yyyy-MM-dd") 
 	@Column(name = "joining_date", nullable = false)
-	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-	private LocalDate joiningDate;
+//	@Temporal(TemporalType.DATE)
+	private String joiningDate;
 
 	@NotNull
 	@Digits(integer=8, fraction=2)
 	@Column(name = "salary", nullable = false)
 	private BigDecimal salary;
-	
+
 	@NotEmpty
 	@Column(name = "ssn", unique=true, nullable = false)
 	private String ssn;
@@ -60,11 +57,11 @@ public class Employee {
 		this.name = name;
 	}
 
-	public LocalDate getJoiningDate() {
+	public String getJoiningDate() {
 		return joiningDate;
 	}
 
-	public void setJoiningDate(LocalDate joiningDate) {
+	public void setJoiningDate(String joiningDate) {
 		this.joiningDate = joiningDate;
 	}
 
@@ -117,8 +114,4 @@ public class Employee {
 		return "Employee [id=" + id + ", name=" + name + ", joiningDate="
 				+ joiningDate + ", salary=" + salary + ", ssn=" + ssn + "]";
 	}
-	
-	
-	
-
 }
