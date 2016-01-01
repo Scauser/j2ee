@@ -16,10 +16,10 @@ public class TestClass1 implements TestInterface1 {
 
 	// #11 - true
 	public int turn1(String direction) {
-		return 2;
+		return 1;
 	}
 
-	// #7 - true #8 - true
+	// #7 - true; #8 - true
 	public int turn1(String direction, double radius, double startSpeed, double endSpeed) {
 		return 0;
 	}

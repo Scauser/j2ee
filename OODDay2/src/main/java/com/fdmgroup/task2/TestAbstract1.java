@@ -1,6 +1,6 @@
 package com.fdmgroup.task2;
 
-abstract class TestAbstract1 implements TestInterface1 { // #3 - true
+abstract class TestAbstract1 implements TestInterface1 { // #3 - true, #7 - true
 	
 	int x; // #2 - true
 	
