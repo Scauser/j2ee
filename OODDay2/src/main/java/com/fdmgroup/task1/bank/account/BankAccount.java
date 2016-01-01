@@ -16,7 +16,9 @@ public class BankAccount {
 	private Integer id;
 	private Double balance;
 	private BankCustomer customer;
-//	private String accountType;
+	
+	// account type is parameter which means account belong to person or company
+	private String accountType;
 	
 	public BankAccount() {
 		lastUniqueId += 5;
@@ -29,15 +31,19 @@ public class BankAccount {
 			balance += changeValue;
 		} else if(WITHDRAW.equals(changeType)) { // if change type is Withdraw
 			Double newBalance = balance - changeValue; // new balance after changes
-			if(this instanceof SavingsAccount && newBalance < 0.0) { // 
-				System.out.println("Savings Account cann't be overdrawn!!");
+			if(this instanceof SavingsAccount && newBalance < 0.0) { 
+				// check if this object is instance of SavingsAccount 
+				// and newBalance is overdrawn show error
+				System.out.println("ERROR: Savings Account can't be overdrawn!!");
 				return;
 			} else {
 				balance = newBalance;
 			}
 		} else if(CORRECTION.equals(changeType)) { // if change type is Correction
 			if(this instanceof SavingsAccount && changeValue < 0.0) {
-				System.out.println("Savings Account cann't be overdrawn!!");
+				// check if this object is instance of SavingsAccount 
+				// and changeValue is less than zero show error
+				System.out.println("ERROR: Savings Account can't be overdrawn!!");
 				return;
 			} else {
 				balance = changeValue;
@@ -61,7 +67,11 @@ public class BankAccount {
 		this.customer = customer;
 	}
 	
-//	public String getAccountType() {
-//		return accountType;
-//	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+	
+	public String getAccountType() {
+		return accountType;
+	}
 }
