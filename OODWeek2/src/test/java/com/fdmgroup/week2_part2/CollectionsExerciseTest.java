@@ -86,11 +86,12 @@ public class CollectionsExerciseTest {
 	
 	@Test
 	public void testGetTreeSet() {
-		String input = "Hello to everybody";
+		String input = "3 1 2";
 		// act
 		TreeSet<String> treeSet = exercise.getTreeSet(input);
 		// assert
 		// check that size of the returned set is 3
+//		System.out.println(treeSet);
 		assertEquals(3, treeSet.size());
 	}
 	
