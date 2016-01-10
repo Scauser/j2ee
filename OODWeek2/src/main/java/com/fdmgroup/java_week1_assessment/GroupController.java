@@ -8,7 +8,6 @@ public class GroupController {
 	private DatabaseReader reader;
 	
 	public GroupController(DatabaseWriter writer, DatabaseReader reader) {
-		super();
 		this.writer = writer;
 		this.reader = reader;
 	}
